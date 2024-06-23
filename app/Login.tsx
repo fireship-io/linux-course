@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase('http://127.0.0.1:8090');
+const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://127.0.0.1:8090')
+;
 
 export default function GitHubLogin() {
   const [user, setUser] = useState<any>(null);
