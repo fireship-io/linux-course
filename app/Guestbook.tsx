@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import PocketBase from 'pocketbase';
 import { faker } from '@faker-js/faker';
 
-const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://127.0.0.1:8090')
-;
+import { pb } from './pocketbase'
 
 export default function GuestbookSigner() {
   const [user, setUser] = useState<any>(null);
@@ -21,7 +20,6 @@ export default function GuestbookSigner() {
 
     // Listen for authentication changes
     pb.authStore.onChange((auth) => {
-      console.log(777, auth)
       setUser(auth ? pb.authStore.model : null);
     });
 
@@ -50,7 +48,6 @@ export default function GuestbookSigner() {
     const message = faker.hacker.phrase();
 
     try {
-        console.log(111, user)
       const record = await pb.collection('signatures').create({
         // user: user.id,
         user: user.id,
