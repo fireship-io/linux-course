@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## The Full Linux Course
 
-## Getting Started
+This repo contains the project source code the the [The Full Linux Self-hosting Course](https://fireship.io/courses/linux/). 
 
-First, run the development server:
+## How to Run it Locally
 
-```bash
+```
+git clone <this-repo> guestbook
+cd guestbook
+
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+./pocketbase serve
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Pocketbase Setup Instructions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Navigate to [localhost:8090/_/](http://127.0.0.1:8090/_/)
 
-## Learn More
+Create an admin account for your pocketbase backend
 
-To learn more about Next.js, take a look at the following resources:
+In Pocketbase, go to settings -> auth providers -> github
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+In order to enable GitHub login, you will need to create a [GitHub OAuth app](https://github.com/settings/applications/new) to obtain a Client ID and Secret. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Set the callback URL to: http://127.0.0.1:8090/api/oauth2-redirect
 
-## Deploy on Vercel
+Set the Client ID and Secret in Pocketbase and you should now be able to login with GitHub locally. 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

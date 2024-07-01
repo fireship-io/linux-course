@@ -29,9 +29,9 @@ export default function GuestbookSigner() {
 
   const fetchSignatures = async () => {
         try {
-        const resultList = await pb.collection('signatures').getList(1, 100, {
+        const resultList = await pb.collection('users').getList(1, 100, {
             sort: '-created',
-            expand: 'user',
+            // expand: 'user',
         });
         setSignatures(resultList.items);
         } catch (error) {
@@ -48,10 +48,14 @@ export default function GuestbookSigner() {
     const message = faker.hacker.phrase();
 
     try {
-      const record = await pb.collection('signatures').create({
-        // user: user.id,
-        user: user.id,
+      // const record = await pb.collection('signatures').create({
+      //   // user: user.id,
+      //   user: user.id,
+      //   message: message,
+      // });
+      const record = await pb.collection('users').update(user.id, {
         message: message,
+        signed: new DateTime()
       });
       console.log('Guestbook signed:', record);
     //   setLastMessage(message);
