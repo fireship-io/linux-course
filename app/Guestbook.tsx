@@ -55,7 +55,7 @@ export default function GuestbookSigner() {
       // });
       const record = await pb.collection('users').update(user.id, {
         message: message,
-        signed: new DateTime()
+        signed: new Date()
       });
       console.log('Guestbook signed:', record);
     //   setLastMessage(message);
